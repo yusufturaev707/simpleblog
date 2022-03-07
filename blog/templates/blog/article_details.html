@@ -11,7 +11,7 @@
     </small><br>
     <hr>
     <br>
-    {{ post.body|safe }}
+    {{ post.body }}
 
     <br>
     <br>
@@ -29,8 +29,8 @@
             {% endif %}
         </form>
     {% else %}
-        <small><a href="{% url 'login' %}">Login</a>  to like !</small>
-            <small>{{ total_likes }} likes</small>
+        <small><a href="{% url 'login' %}">Login</a> to like !</small>
     {% endif %}
+    <small>{{ total_likes }} likes</small>
 
 {% endblock %}

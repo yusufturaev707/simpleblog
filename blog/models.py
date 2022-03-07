@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 User = get_user_model()
 
@@ -15,11 +16,12 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('home')
 
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
     tag = models.CharField(max_length=255, null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField()
+    body = RichTextField(blank=True, null=True)
     post_date = models.DateField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     likes = models.ManyToManyField(User, related_name='blog_posts')
@@ -33,5 +35,3 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('home')
         # return reverse('article-detail', kwargs={"pk": self.pk})
-
-
