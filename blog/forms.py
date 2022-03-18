@@ -6,7 +6,7 @@ from blog.models import Post
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'category', 'tag', 'author', 'body']
+        fields = ['title', 'category', 'tag', 'author', 'body', 'snippet', 'header_image']
 
         widgets = {
             'title': forms.TextInput(attrs={
@@ -31,6 +31,9 @@ class PostForm(forms.ModelForm):
             'body': forms.Textarea(attrs={
                 'class': 'form-control',
                 'placeholder': 'Body'
+            }),
+            'snippet': forms.TextInput(attrs={
+                'class': 'form-control',
             }),
         }
 

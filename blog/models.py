@@ -19,11 +19,13 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
+    header_image = models.ImageField(upload_to='images/', null=True, blank=True)
     tag = models.CharField(max_length=255, null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = RichTextField(blank=True, null=True)
     post_date = models.DateField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+    snippet = models.CharField(max_length=255, default='Click Link Above To Read Blog Post...')
     likes = models.ManyToManyField(User, related_name='blog_posts')
 
     def total_likes(self):

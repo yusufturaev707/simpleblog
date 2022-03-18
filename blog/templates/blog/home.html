@@ -17,6 +17,7 @@
                 <br>
                 {{ post.author.email }}
                 <br>
+            {{ post.snippet }}
                 {{ post.body|safe|slice:":200" }}
             </li>
         {% endfor %}
